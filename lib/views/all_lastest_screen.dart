@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import '../controllers/shoe_notifier.dart';
@@ -83,8 +84,10 @@ class _AllLastestScreenState extends State<AllLastestScreen>
                 right: Dimens.dwp10,
                 bottom: Dimens.dhp20),
             child: TabBarView(controller: _tabController, children: [
-              AllLastestShoeWidget(
-                sneakers: sneakers.maleList,
+              AnimationLimiter(
+                child: AllLastestShoeWidget(
+                  sneakers: sneakers.maleList,
+                ),
               ),
               AllLastestShoeWidget(
                 sneakers: sneakers.femaleList,

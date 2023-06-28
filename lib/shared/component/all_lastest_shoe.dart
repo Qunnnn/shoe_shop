@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import '../../models/shoe_model.dart';
 import '../preferences/preferences.dart';
@@ -24,33 +25,43 @@ class AllLastestShoeWidget extends StatelessWidget {
                     ? Dimens.getHeight(height: 360)
                     : Dimens.getHeight(height: 300));
           },
-          itemBuilder: (context, index) => Container(
-            padding: const EdgeInsets.all(8),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(20),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                CachedNetworkImage(
-                  imageUrl: sneakers[index].imageUrl[1],
-                  fit: BoxFit.fill,
-                ),
-                SizedBox(
-                  height: index.isOdd ? Dimens.dhp20 : 0,
-                ),
-                Text(
-                  sneakers[index].name,
-                  style: CustomTextStyle.headerStyle_30.copyWith(
-                    color: Colors.black,
+          itemBuilder: (context, index) => AnimationConfiguration.staggeredGrid(
+            position: index,
+            duration: const Duration(milliseconds: 800),
+            columnCount: sneakers.length,
+            child: ScaleAnimation(
+              child: FadeInAnimation(
+                curve: Curves.easeInOut,
+                child: Container(
+                  padding: const EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      CachedNetworkImage(
+                        imageUrl: sneakers[index].imageUrl[1],
+                        fit: BoxFit.fill,
+                      ),
+                      SizedBox(
+                        height: index.isOdd ? Dimens.dhp20 : 0,
+                      ),
+                      Text(
+                        sneakers[index].name,
+                        style: CustomTextStyle.headerStyle_30.copyWith(
+                          color: Colors.black,
+                        ),
+                      ),
+                      Text(
+                        '\$${sneakers[index].price}',
+                        style: CustomTextStyle.titleStyle_20,
+                      ),
+                    ],
                   ),
                 ),
-                Text(
-                  '\$${sneakers[index].price}',
-                  style: CustomTextStyle.titleStyle_20,
-                ),
-              ],
+              ),
             ),
           ),
         ));

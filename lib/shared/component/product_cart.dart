@@ -43,7 +43,10 @@ class ProductCard extends StatelessWidget {
                         child: Stack(children: [
                           const Align(
                               alignment: Alignment.topRight,
-                              child: Icon(FontAwesomeIcons.heart)),
+                              child: Icon(
+                                FontAwesomeIcons.heart,
+                                color: Colors.grey,
+                              )),
                           Align(
                             alignment: Alignment.center,
                             child: CachedNetworkImage(
