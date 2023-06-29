@@ -51,11 +51,11 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
               children: [
                 Text(
                   'Athletics Shoes',
-                  style: CustomTextStyle.headerStyle_30,
+                  style: CustomTextStyle.headerStyle_30_white,
                 ),
                 Text(
                   'Collection',
-                  style: CustomTextStyle.headerStyle_30,
+                  style: CustomTextStyle.headerStyle_30_white,
                 ),
                 TabBarWidget(tabController: _tabController),
               ],

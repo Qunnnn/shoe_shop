@@ -1,7 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:online_shop/models/shoe_model.dart';
+import 'package:online_shop/models/sneaker_model.dart';
+import 'package:online_shop/views/views.dart';
 import '../preferences/preferences.dart';
 
 class ProductCard extends StatelessWidget {
@@ -10,7 +11,7 @@ class ProductCard extends StatelessWidget {
     required this.sneakers,
   });
 
-  final List<ShoeModel> sneakers;
+  final List<SneakerModel> sneakers;
 
   @override
   Widget build(BuildContext context) {
@@ -26,51 +27,62 @@ class ProductCard extends StatelessWidget {
               itemCount: sneakers.length,
               itemBuilder: (context, index) {
                 final sneaker = sneakers[index];
-                return Container(
-                  margin: EdgeInsets.only(right: Dimens.dwp15),
-                  padding: EdgeInsets.only(left: Dimens.dwp10),
-                  width: Dimens.getWidth(width: 200),
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(15)),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.all(10),
-                        height: Dimens.getHeight(height: 150),
-                        width: Dimens.getWidth(width: 190),
-                        child: Stack(children: [
-                          const Align(
-                              alignment: Alignment.topRight,
-                              child: Icon(
-                                FontAwesomeIcons.heart,
-                                color: Colors.grey,
-                              )),
-                          Align(
-                            alignment: Alignment.center,
-                            child: CachedNetworkImage(
-                              imageUrl: sneaker.imageUrl[0],
-                              fit: BoxFit.cover,
+                return GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ProductScreen(id: sneaker.id , category: sneaker.category,),
+                        ));
+                  },
+                  child: Container(
+                    margin: EdgeInsets.only(right: Dimens.dwp15),
+                    padding: EdgeInsets.only(left: Dimens.dwp10),
+                    width: Dimens.getWidth(width: 200),
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(15)),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.all(10),
+                          height: Dimens.getHeight(height: 150),
+                          width: Dimens.getWidth(width: 190),
+                          child: Stack(children: [
+                            const Align(
+                                alignment: Alignment.topRight,
+                                child: Icon(
+                                  FontAwesomeIcons.heart,
+                                  color: Colors.grey,
+                                )),
+                            Align(
+                              alignment: Alignment.center,
+                              child: CachedNetworkImage(
+                                imageUrl: sneaker.imageUrl[0],
+                                fit: BoxFit.cover,
+                              ),
                             ),
-                          ),
-                        ]),
-                      ),
-                      Text(
-                        sneaker.name,
-                        style: CustomTextStyle.headerStyle_30.copyWith(
-                          color: Colors.black,
+                          ]),
                         ),
-                      ),
-                      Text(
-                        sneaker.category,
-                        style: CustomTextStyle.titleStyle_15,
-                      ),
-                      Text(
-                        '\$${sneaker.price}',
-                        style: CustomTextStyle.titleStyle_20,
-                      ),
-                    ],
+                        SizedBox(
+                          height: Dimens.getHeight(height: 85),
+                          child: Text(
+                            sneaker.name,
+                            style: CustomTextStyle.headerStyle_30_black,
+                            overflow: TextOverflow.clip,
+                          ),
+                        ),
+                        Text(
+                          sneaker.category,
+                          style: CustomTextStyle.titleStyle_15_grey,
+                        ),
+                        Text(
+                          '\$${sneaker.price}',
+                          style: CustomTextStyle.titleStyle_20_black,
+                        ),
+                      ],
+                    ),
                   ),
                 );
               },

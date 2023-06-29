@@ -2,12 +2,12 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import '../../models/shoe_model.dart';
+import '../../models/sneaker_model.dart';
 import '../preferences/preferences.dart';
 
 class AllLastestShoeWidget extends StatelessWidget {
   const AllLastestShoeWidget({super.key, required this.sneakers});
-  final List<ShoeModel> sneakers;
+  final List<SneakerModel> sneakers;
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
@@ -50,13 +50,11 @@ class AllLastestShoeWidget extends StatelessWidget {
                       ),
                       Text(
                         sneakers[index].name,
-                        style: CustomTextStyle.headerStyle_30.copyWith(
-                          color: Colors.black,
-                        ),
+                        style: CustomTextStyle.headerStyle_30_black,
                       ),
                       Text(
                         '\$${sneakers[index].price}',
-                        style: CustomTextStyle.titleStyle_20,
+                        style: CustomTextStyle.titleStyle_20_black,
                       ),
                     ],
                   ),

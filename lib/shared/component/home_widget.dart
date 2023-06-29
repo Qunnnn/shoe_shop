@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:online_shop/shared/component/component.dart';
 import 'package:online_shop/views/views.dart';
-import '../../models/shoe_model.dart';
+import '../../models/sneaker_model.dart';
 import '../preferences/preferences.dart';
 
 class HomeWidget extends StatelessWidget {
@@ -12,7 +12,7 @@ class HomeWidget extends StatelessWidget {
     required this.tabIndex,
   });
   final int tabIndex;
-  final List<ShoeModel> sneakers;
+  final List<SneakerModel> sneakers;
 
   @override
   Widget build(BuildContext context) {
@@ -27,15 +27,15 @@ class HomeWidget extends StatelessWidget {
           children: [
             Text(
               'Latest Shoe',
-              style: CustomTextStyle.titleStyle_17
-                  .copyWith(color: Colors.black, fontWeight: FontWeight.bold),
+              style: CustomTextStyle.titleStyle_17_black,
             ),
             GestureDetector(
               onTap: () {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => AllLastestScreen(tabIndex: tabIndex,
+                      builder: (context) => AllLastestScreen(
+                        tabIndex: tabIndex,
                       ),
                     ));
               },
@@ -43,8 +43,8 @@ class HomeWidget extends StatelessWidget {
                 children: [
                   Text(
                     'Show all',
-                    style: CustomTextStyle.titleStyle_17.copyWith(
-                        color: Colors.black, fontWeight: FontWeight.bold),
+                    style: CustomTextStyle.titleStyle_17_black
+                        .copyWith(fontWeight: FontWeight.bold),
                   ),
                   const Icon(
                     FontAwesomeIcons.caretRight,

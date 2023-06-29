@@ -1,11 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import '../../models/shoe_model.dart';
+import '../../models/sneaker_model.dart';
 import '../preferences/preferences.dart';
 
 class NewShoe extends StatelessWidget {
   const NewShoe({super.key, required this.sneakers});
-  final List<ShoeModel> sneakers;
+  final List<SneakerModel> sneakers;
   @override
   Widget build(BuildContext context) {
     return SizedBox(

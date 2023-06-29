@@ -15,7 +15,7 @@ class TabBarWidget extends StatelessWidget {
     return TabBar(
         controller: _tabController,
         indicatorColor: Colors.transparent,
-        labelStyle: CustomTextStyle.titleStyle_17,
+        labelStyle: CustomTextStyle.titleStyle_17_grey,
         labelColor: Colors.white,
         dividerColor: Colors.transparent,
         isScrollable: true,
