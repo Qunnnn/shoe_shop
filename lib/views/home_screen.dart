@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:online_shop/controllers/shoe_notifier.dart';
+import 'package:online_shop/controllers/sneaker_notifier.dart';
 import 'package:online_shop/shared/preferences/preferences.dart';
 import 'package:provider/provider.dart';
 
@@ -14,11 +14,11 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   late final TabController _tabController;
-  late final ShoeNotifier shoeNotifier;
+  late final SneakerNotifier shoeNotifier;
   @override
   void initState() {
     _tabController = TabController(length: 3, vsync: this);
-    shoeNotifier = Provider.of<ShoeNotifier>(context, listen: false);
+    shoeNotifier = Provider.of<SneakerNotifier>(context, listen: false);
     shoeNotifier.getMaleList();
     shoeNotifier.getFemaleList();
     shoeNotifier.getKidList();
@@ -33,7 +33,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    final sneakers = context.watch<ShoeNotifier>();
+    final sneakers = context.watch<SneakerNotifier>();
     return Scaffold(
       backgroundColor: AppColors.backGrColor,
       body: Stack(

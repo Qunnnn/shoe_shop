@@ -1,8 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:online_shop/controllers/sneaker_notifier.dart';
 import 'package:online_shop/models/sneaker_model.dart';
 import 'package:online_shop/views/views.dart';
+import 'package:provider/provider.dart';
 import '../preferences/preferences.dart';
 
 class ProductCard extends StatelessWidget {
@@ -15,6 +17,7 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final sneakerProvider = Provider.of<SneakerNotifier>(context);
     return SizedBox(
       height: Dimens.getHeight(height: 300),
       child: sneakers.isEmpty
@@ -28,11 +31,15 @@ class ProductCard extends StatelessWidget {
               itemBuilder: (context, index) {
                 final sneaker = sneakers[index];
                 return GestureDetector(
-                  onTap: () {
+                  onTap: ()  {
+                    sneakerProvider.sneakerSizes =  sneakers[index].sizes;
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => ProductScreen(id: sneaker.id , category: sneaker.category,),
+                          builder: (context) => ProductScreen(
+                            id: sneaker.id,
+                            category: sneaker.category,
+                          ),
                         ));
                   },
                   child: Container(

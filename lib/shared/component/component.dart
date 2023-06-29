@@ -5,3 +5,6 @@ export 'new_shoe.dart';
 export 'home_widget.dart';
 export 'all_lastest_shoe.dart';
 export 'tab_bar_widget.dart';
+export 'reuseable_button.dart';
+export 'size_field.dart';
+export 'product_detail_widget.dart';

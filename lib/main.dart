@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:online_shop/controllers/main_screen_notifier.dart';
-import 'package:online_shop/controllers/shoe_notifier.dart';
+import 'package:online_shop/controllers/sneaker_notifier.dart';
 import 'package:online_shop/views/main_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => MainScreenNotifier()), 
-        ChangeNotifierProvider(create: (context) => ShoeNotifier()), 
+        ChangeNotifierProvider(create: (context) => SneakerNotifier()), 
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

@@ -8,7 +8,7 @@ class SneakerModel {
     String category;
     List<String> imageUrl;
     String oldPrice;
-    List<Size> sizes;
+    List<dynamic> sizes;
     String price;
     String description;
     String title;
@@ -31,7 +31,7 @@ class SneakerModel {
         category: json["category"],
         imageUrl: List<String>.from(json["imageUrl"].map((x) => x)),
         oldPrice: json["oldPrice"],
-        sizes: List<Size>.from(json["sizes"].map((x) => Size.fromJson(x))),
+        sizes: List<dynamic>.from(json["sizes"].map((x) => x)),
         price: json["price"],
         description: json["description"],
         title: json["title"],
@@ -40,19 +40,4 @@ class SneakerModel {
 
 }
 
-class Size {
-    String size;
-    bool isSelected;
 
-    Size({
-        required this.size,
-        required this.isSelected,
-    });
-
-    factory Size.fromJson(Map<String, dynamic> json) => Size(
-        size: json["size"],
-        isSelected: json["isSelected"],
-    );
-
-
-}

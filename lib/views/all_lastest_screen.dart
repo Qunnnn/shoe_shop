@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
-import '../controllers/shoe_notifier.dart';
+import '../controllers/sneaker_notifier.dart';
 import '../shared/component/component.dart';
 import '../shared/preferences/preferences.dart';
 
@@ -31,7 +31,7 @@ class _AllLastestScreenState extends State<AllLastestScreen>
 
   @override
   Widget build(BuildContext context) {
-    final sneakers = context.read<ShoeNotifier>();
+    final sneakers = context.read<SneakerNotifier>();
     return Scaffold(
       backgroundColor: AppColors.backGrColor, 
       body: Stack(
