@@ -31,8 +31,8 @@ class ProductCard extends StatelessWidget {
               itemBuilder: (context, index) {
                 final sneaker = sneakers[index];
                 return GestureDetector(
-                  onTap: ()  {
-                    sneakerProvider.sneakerSizes =  sneakers[index].sizes;
+                  onTap: () {
+                    sneakerProvider.sneakerSizes = sneakers[index].sizes;
                     Navigator.push(
                         context,
                         MaterialPageRoute(

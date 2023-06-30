@@ -2,9 +2,10 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:hive/hive.dart';
 import 'package:online_shop/shared/component/component.dart';
+import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-
 import '../../controllers/sneaker_notifier.dart';
 import '../preferences/preferences.dart';
 
@@ -12,17 +13,21 @@ class ProductDetailWidget extends StatelessWidget {
   const ProductDetailWidget({
     super.key,
     required PageController pageController,
-    required this.data,
     required this.defaultPadding,
   }) : _pageController = pageController;
 
   final PageController _pageController;
-  final SneakerNotifier data;
   final SizedBox defaultPadding;
 
   @override
   Widget build(BuildContext context) {
-    final sneaker = data.sneaker!;
+    final sneakerNotifier = context.watch<SneakerNotifier>();
+    final sneaker = sneakerNotifier.sneaker!;
+    final cartBox = Hive.box(Constants.cartBoxName);
+    Future<void> createCart(Map<String, dynamic> newCart) async {
+      await cartBox.add(newCart);
+    }
+
     return Stack(
       children: [
         SizedBox(
@@ -142,7 +147,7 @@ class ProductDetailWidget extends StatelessWidget {
                                               ? Colors.red
                                               : Colors.grey,
                                     ),
-                                  ))
+                                  )),
                         ],
                       )
                     ],
@@ -163,7 +168,7 @@ class ProductDetailWidget extends StatelessWidget {
                       )
                     ],
                   ),
-                  SizeField(sneaker: data),
+                  const SizeField(),
                   const Divider(
                     color: Colors.black54,
                   ),
@@ -174,8 +179,22 @@ class ProductDetailWidget extends StatelessWidget {
                     style: CustomTextStyle.titleStyle_15_grey,
                   ),
                   defaultPadding,
-                  const Center(
-                    child: ReusableButton(),
+                  Center(
+                    child: ReusableButton(
+                      label: 'Add to bag',
+                      onTap: () async {
+                        await createCart({
+                          'id': sneaker.id,
+                          'name': sneaker.name,
+                          'category': sneaker.category,
+                          'imageUrl': sneaker.imageUrl[0],
+                          'sizes': sneaker.isSelectedSize,
+                          'price': sneaker.price,
+                          'qty': 1,
+                        });
+                        Navigator.pop(context);
+                      },
+                    ),
                   ),
                   SizedBox(
                     height: Dimens.getHeight(height: 30),

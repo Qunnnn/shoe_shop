@@ -11,9 +11,9 @@ class MainScreen extends StatelessWidget {
 
   List<Widget> screenList = [
     const HomeScreen(),
-    const CartScreen(),
-    const AddScreen(),
     const SearchScreen(),
+    const AddScreen(),
+     CartScreen(),
     const ProfileScreen(),
   ];
 

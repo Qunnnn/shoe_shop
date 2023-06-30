@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:online_shop/controllers/main_screen_notifier.dart';
 import 'package:online_shop/controllers/sneaker_notifier.dart';
-import 'package:online_shop/shared/core/local_storage/hive.dart';
+import 'package:online_shop/shared/preferences/constant.dart';
 import 'package:online_shop/views/main_screen.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
-  HiveStorage.init();
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Hive.initFlutter();
+  await Hive.openBox(Constants.cartBoxName);
+  await Hive.openBox(Constants.favBoxName);
   runApp(const MyApp());
 }
 

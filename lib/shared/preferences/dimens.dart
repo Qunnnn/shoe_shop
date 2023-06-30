@@ -1,11 +1,13 @@
 import 'package:get/get.dart';
 
 class Dimens {
+  static final dhp5 = Dimens.getHeight(height: 5);
   static final dhp10 = Dimens.getHeight(height: 10);
   static final dhp15 = Dimens.getHeight(height: 15);
   static final dhp20 = Dimens.getHeight(height: 20);
   static final dhp25 = Dimens.getHeight(height: 25);
 
+  static final dwp5 = Dimens.getWidth(width: 5);
   static final dwp10 = Dimens.getWidth(width: 10);
   static final dwp15 = Dimens.getWidth(width: 15);
   static final dwp20 = Dimens.getWidth(width: 20);

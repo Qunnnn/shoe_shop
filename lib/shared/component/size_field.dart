@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../controllers/sneaker_notifier.dart';
 import '../preferences/preferences.dart';
@@ -6,44 +7,41 @@ import '../preferences/preferences.dart';
 class SizeField extends StatelessWidget {
   const SizeField({
     super.key,
-    required this.sneaker,
   });
-
-  final SneakerNotifier sneaker;
 
   @override
   Widget build(BuildContext context) {
+    final sneakerNotifier = context.watch<SneakerNotifier>();
+    final sneaker = sneakerNotifier.sneaker!;
     return SizedBox(
       height: Dimens.getHeight(
         height: 50,
       ),
       child: ListView.builder(
-        itemCount: sneaker.sneakerSizes.length,
+        itemCount: sneakerNotifier.sneakerSizes.length,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
+          final size = sneakerNotifier.sneakerSizes[index];
           return Padding(
-            padding:
-                const EdgeInsets.only(right: 10),
+            padding: const EdgeInsets.only(right: 10),
             child: ChoiceChip(
               selectedColor: Colors.black,
-              labelStyle: sneaker
-                          .sneakerSizes[index]
-                      ['isSelected']
-                  ? CustomTextStyle
-                      .titleStyle_15_grey
-                      .copyWith(
-                          color: Colors.white)
-                  : CustomTextStyle
-                      .titleStyle_15_grey,
+              labelStyle: size['isSelected']
+                  ? CustomTextStyle.titleStyle_15_grey
+                      .copyWith(color: Colors.white)
+                  : CustomTextStyle.titleStyle_15_grey,
               label: Text(
-                sneaker.sneakerSizes[index]
-                    ['size'],
+                size['size'],
               ),
-              selected:
-                  sneaker.sneakerSizes[index]
-                      ['isSelected'],
+              selected: size['isSelected'],
               onSelected: (value) {
-                sneaker.toggleSizeCheck(index);
+               
+                if (sneaker.isSelectedSize!.contains(size['size'])) {
+                  sneaker.isSelectedSize!.remove(size['size']);
+                } else {
+                  sneaker.isSelectedSize!.add(size['size']);
+                }
+                sneakerNotifier.toggleSizeCheck(index);
               },
             ),
           );

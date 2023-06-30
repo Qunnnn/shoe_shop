@@ -51,7 +51,6 @@ class _ProductScreenState extends State<ProductScreen> {
                 GestureDetector(
                   onTap: () {
                     Navigator.pop(context);
-                    sneaker.clearSize();
                   },
                   child: const Icon(
                     FontAwesomeIcons.xmark,
@@ -66,7 +65,9 @@ class _ProductScreenState extends State<ProductScreen> {
             flexibleSpace: FlexibleSpaceBar(
               background: sneaker.sneaker == null
                   ? const Center(child: CircularProgressIndicator())
-                  : ProductDetailWidget(pageController: _pageController, data: sneaker, defaultPadding: defaultPadding),
+                  : ProductDetailWidget(
+                      pageController: _pageController,
+                      defaultPadding: defaultPadding),
             ),
           )
         ],
@@ -74,7 +75,3 @@ class _ProductScreenState extends State<ProductScreen> {
     );
   }
 }
-
-
-
-

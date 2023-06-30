@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:online_shop/controllers/sneaker_notifier.dart';
 import 'package:online_shop/shared/preferences/preferences.dart';
 import 'package:provider/provider.dart';
-
 import '../shared/component/component.dart';
 
 class HomeScreen extends StatefulWidget {
