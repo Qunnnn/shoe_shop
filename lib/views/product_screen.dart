@@ -66,7 +66,7 @@ class _ProductScreenState extends State<ProductScreen> {
             flexibleSpace: FlexibleSpaceBar(
               background: sneaker.sneaker == null
                   ? const Center(child: CircularProgressIndicator())
-                  : ProductDetailWidget(pageController: _pageController, sneaker: sneaker, defaultPadding: defaultPadding),
+                  : ProductDetailWidget(pageController: _pageController, data: sneaker, defaultPadding: defaultPadding),
             ),
           )
         ],
