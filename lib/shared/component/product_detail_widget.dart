@@ -2,11 +2,11 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:hive/hive.dart';
+import 'package:online_shop/controllers/controllers.dart';
 import 'package:online_shop/shared/component/component.dart';
+import 'package:online_shop/views/fav_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import '../../controllers/sneaker_notifier.dart';
 import '../preferences/preferences.dart';
 
 class ProductDetailWidget extends StatelessWidget {
@@ -22,12 +22,9 @@ class ProductDetailWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final sneakerNotifier = context.watch<SneakerNotifier>();
+    final cartNotifier = context.read<CartNotifier>();
+    final favProvider = Provider.of<FavNotifier>(context);
     final sneaker = sneakerNotifier.sneaker!;
-    final cartBox = Hive.box(Constants.cartBoxName);
-    Future<void> createCart(Map<String, dynamic> newCart) async {
-      await cartBox.add(newCart);
-    }
-
     return Stack(
       children: [
         SizedBox(
@@ -50,11 +47,30 @@ class ProductDetailWidget extends StatelessWidget {
                       top: Dimens.getHeight(height: 70),
                       right: Dimens.getWidth(width: 30),
                       child: GestureDetector(
-                        onTap: () {},
-                        child: const Icon(
-                          FontAwesomeIcons.heart,
-                          color: Colors.grey,
-                        ),
+                        onTap: () {
+                          if (favProvider.ids.contains(sneaker.id)) {
+                            favProvider.deleteCart(int.parse(sneaker.id));
+                            favProvider.getFavIds();
+                            favProvider.getFav();
+                          } else {
+                            favProvider.createFav(int.parse(sneaker.id), {
+                              'id': sneaker.id,
+                              'category': sneaker.category,
+                              'imageUrl': sneaker.imageUrl[0],
+                              'name': sneaker.name,
+                              'price': sneaker.price,
+                            });
+                            favProvider.getFavIds();
+                            favProvider.getFav();
+                          }
+                        },
+                        child: Icon(
+                            favProvider.ids.contains(sneaker.id)
+                                ? FontAwesomeIcons.solidHeart
+                                : FontAwesomeIcons.heart,
+                            color: favProvider.ids.contains(sneaker.id)
+                                ? Colors.pink[400]
+                                : Colors.grey),
                       )),
                   Padding(
                     padding: EdgeInsets.only(bottom: Dimens.dhp25),
@@ -183,7 +199,7 @@ class ProductDetailWidget extends StatelessWidget {
                     child: ReusableButton(
                       label: 'Add to bag',
                       onTap: () async {
-                        await createCart({
+                        await cartNotifier.createCart(int.parse(sneaker.id), {
                           'id': sneaker.id,
                           'name': sneaker.name,
                           'category': sneaker.category,

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:online_shop/controllers/main_screen_notifier.dart';
-import 'package:online_shop/controllers/sneaker_notifier.dart';
+import 'package:online_shop/controllers/controllers.dart';
 import 'package:online_shop/shared/preferences/constant.dart';
 import 'package:online_shop/views/main_screen.dart';
 import 'package:provider/provider.dart';
@@ -24,6 +23,8 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (context) => MainScreenNotifier()),
         ChangeNotifierProvider(create: (context) => SneakerNotifier()),
+        ChangeNotifierProvider(create: (context) => CartNotifier()),
+        ChangeNotifierProvider(create: (context) => FavNotifier(),)
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

@@ -41,7 +41,7 @@ class BottomNav extends StatelessWidget {
                 mainScreenNotifier.pageIndex = 1;
               }),
           BottomNavIcon(
-              icon: FontAwesomeIcons.plus,
+              icon: FontAwesomeIcons.heart,
               clr: mainScreenNotifier.pageIndex == 2
                   ? AppColors.activeIconClr
                   : AppColors.inActiveIconClr,

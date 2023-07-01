@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:online_shop/controllers/sneaker_notifier.dart';
+import 'package:online_shop/controllers/controllers.dart';
 import 'package:online_shop/models/sneaker_model.dart';
 import 'package:online_shop/views/views.dart';
 import 'package:provider/provider.dart';
@@ -18,6 +18,7 @@ class ProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final sneakerProvider = Provider.of<SneakerNotifier>(context);
+    final favProvider = Provider.of<FavNotifier>(context);
     return SizedBox(
       height: Dimens.getHeight(height: 300),
       child: sneakers.isEmpty
@@ -57,11 +58,36 @@ class ProductCard extends StatelessWidget {
                           height: Dimens.getHeight(height: 150),
                           width: Dimens.getWidth(width: 190),
                           child: Stack(children: [
-                            const Align(
+                            Align(
                                 alignment: Alignment.topRight,
-                                child: Icon(
-                                  FontAwesomeIcons.heart,
-                                  color: Colors.grey,
+                                child: GestureDetector(
+                                  onTap: () {
+                                    if (favProvider.ids.contains(sneaker.id)) {
+                                      favProvider
+                                          .deleteCart(int.parse(sneaker.id));
+                                      favProvider.getFavIds();
+                                      favProvider.getFav();
+                                    } else {
+                                      favProvider
+                                          .createFav(int.parse(sneaker.id), {
+                                        'id': sneaker.id,
+                                        'category': sneaker.category,
+                                        'imageUrl': sneaker.imageUrl[0],
+                                        'name': sneaker.name,
+                                        'price': sneaker.price,
+                                      });
+                                      favProvider.getFavIds();
+                                      favProvider.getFav();
+                                    }
+                                  },
+                                  child: Icon(
+                                      favProvider.ids.contains(sneaker.id)
+                                          ? FontAwesomeIcons.solidHeart
+                                          : FontAwesomeIcons.heart,
+                                      color:
+                                          favProvider.ids.contains(sneaker.id)
+                                              ? Colors.pink[400]
+                                              : Colors.grey),
                                 )),
                             Align(
                               alignment: Alignment.center,
