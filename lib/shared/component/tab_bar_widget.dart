@@ -13,6 +13,7 @@ class TabBarWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TabBar(
+        padding: EdgeInsets.only(top: Dimens.dhp10),
         controller: _tabController,
         indicatorColor: Colors.transparent,
         labelStyle: CustomTextStyle.titleStyle_17_grey,
