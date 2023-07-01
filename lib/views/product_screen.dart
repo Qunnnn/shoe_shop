@@ -18,8 +18,8 @@ class ProductScreen extends StatefulWidget {
 class _ProductScreenState extends State<ProductScreen> {
   late SneakerNotifier sneakerProvider;
   final PageController _pageController = PageController();
-  final defaultPadding = SizedBox(
-    height: Dimens.dhp10,
+  final defaultPadding = const SizedBox(
+    height: Dimens.dp10,
   );
   @override
   void initState() {

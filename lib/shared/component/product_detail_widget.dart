@@ -28,7 +28,7 @@ class ProductDetailWidget extends StatelessWidget {
     return Stack(
       children: [
         SizedBox(
-          height: Dimens.getHeight(height: 300),
+          height: Dimens.getHeight(context: context,height: 300),
           width: double.infinity,
           child: PageView.builder(
             controller: _pageController,
@@ -44,8 +44,8 @@ class ProductDetailWidget extends StatelessWidget {
                         CachedNetworkImage(imageUrl: sneaker.imageUrl[index]),
                   ),
                   Positioned(
-                      top: Dimens.getHeight(height: 70),
-                      right: Dimens.getWidth(width: 30),
+                      top: Dimens.getHeight(context: context,height: 70),
+                      right: Dimens.getWidth(context: context,width: 30),
                       child: GestureDetector(
                         onTap: () {
                           if (favProvider.ids.contains(sneaker.id)) {
@@ -73,7 +73,7 @@ class ProductDetailWidget extends StatelessWidget {
                                 : Colors.grey),
                       )),
                   Padding(
-                    padding: EdgeInsets.only(bottom: Dimens.dhp25),
+                    padding: const EdgeInsets.only(bottom: Dimens.dp26),
                     child: Align(
                       alignment: Alignment.bottomCenter,
                       child: SmoothPageIndicator(
@@ -82,8 +82,8 @@ class ProductDetailWidget extends StatelessWidget {
                         effect: JumpingDotEffect(
                           activeDotColor: Colors.black,
                           dotColor: Colors.grey,
-                          dotHeight: Dimens.getHeight(height: 10),
-                          dotWidth: Dimens.getWidth(width: 10),
+                          dotHeight: Dimens.getHeight(context: context,height: 10),
+                          dotWidth: Dimens.getWidth(context: context,width: 10),
                         ),
                       ),
                     ),
@@ -97,7 +97,7 @@ class ProductDetailWidget extends StatelessWidget {
           alignment: Alignment.bottomCenter,
           child: Container(
             padding: const EdgeInsets.all(10),
-            height: Dimens.getHeight(height: 500),
+            height: Dimens.getHeight(context: context,height: 500),
             width: double.infinity,
             decoration: const BoxDecoration(
               color: Colors.white,
@@ -117,8 +117,8 @@ class ProductDetailWidget extends StatelessWidget {
                         sneaker.category,
                         style: CustomTextStyle.titleStyle_15_grey,
                       ),
-                      SizedBox(
-                        width: Dimens.dwp20,
+                      const SizedBox(
+                        width: Dimens.dp20,
                       ),
                       RatingBar.builder(
                         itemSize: 20,
@@ -154,8 +154,8 @@ class ProductDetailWidget extends StatelessWidget {
                               3,
                               (index) => Container(
                                     margin: const EdgeInsets.only(left: 5),
-                                    height: Dimens.getHeight(height: 15),
-                                    width: Dimens.getWidth(width: 15),
+                                    height: Dimens.getHeight(context: context,height: 15),
+                                    width: Dimens.getWidth(context: context,width: 15),
                                     child: CircleAvatar(
                                       backgroundColor: index == 0
                                           ? Colors.black
@@ -213,7 +213,7 @@ class ProductDetailWidget extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    height: Dimens.getHeight(height: 30),
+                    height: Dimens.getHeight(context: context,height: 30),
                   ),
                 ],
               ),

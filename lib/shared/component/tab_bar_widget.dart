@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../preferences/preferences.dart';
 
 class TabBarWidget extends StatelessWidget {
@@ -13,7 +12,7 @@ class TabBarWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TabBar(
-        padding: EdgeInsets.only(top: Dimens.dhp10),
+        padding: const EdgeInsets.only(top: Dimens.dp10),
         controller: _tabController,
         indicatorColor: Colors.transparent,
         labelStyle: CustomTextStyle.titleStyle_17_grey,

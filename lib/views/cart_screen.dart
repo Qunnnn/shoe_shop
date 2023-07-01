@@ -36,8 +36,8 @@ class _CartScreenState extends State<CartScreen> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(
-                  height: Dimens.dhp20,
+                const SizedBox(
+                  height: Dimens.dp20,
                 ),
                 Text(
                   'This is my Cart',
@@ -57,7 +57,8 @@ class _CartScreenState extends State<CartScreen> {
                           itemBuilder: (context, index) {
                             final sneaker = data.cart[index];
                             return Padding(
-                              padding: EdgeInsets.only(bottom: Dimens.dhp10),
+                              padding:
+                                  const EdgeInsets.only(bottom: Dimens.dp10),
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(10),
                                 child: Slidable(
@@ -76,10 +77,11 @@ class _CartScreenState extends State<CartScreen> {
                                           )
                                         ]),
                                     child: Container(
-                                      padding: EdgeInsets.symmetric(
-                                          vertical: Dimens.dhp5,
-                                          horizontal: Dimens.dwp10),
-                                      height: Dimens.getHeight(height: 100),
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: Dimens.dp6,
+                                          horizontal: Dimens.dp10),
+                                      height: Dimens.getHeight(
+                                          context: context, height: 100),
                                       width: double.infinity,
                                       decoration: const BoxDecoration(
                                         color: Colors.white,
@@ -90,15 +92,15 @@ class _CartScreenState extends State<CartScreen> {
                                             imageUrl: sneaker['imageUrl'],
                                             fit: BoxFit.fill,
                                           ),
-                                          SizedBox(
-                                            width: Dimens.dwp15,
+                                          const SizedBox(
+                                            width: Dimens.dp16,
                                           ),
                                           Column(
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                             children: [
-                                              SizedBox(
-                                                height: Dimens.dhp10,
+                                              const SizedBox(
+                                                height: Dimens.dp10,
                                               ),
                                               Text(
                                                 sneaker['name'],
@@ -117,8 +119,8 @@ class _CartScreenState extends State<CartScreen> {
                                                     style: CustomTextStyle
                                                         .titleStyle_17_black,
                                                   ),
-                                                  SizedBox(
-                                                    width: Dimens.dwp10,
+                                                  const SizedBox(
+                                                    width: Dimens.dp10,
                                                   ),
                                                   Row(
                                                     children: [
@@ -127,8 +129,8 @@ class _CartScreenState extends State<CartScreen> {
                                                         style: CustomTextStyle
                                                             .titleStyle_17_black,
                                                       ),
-                                                      SizedBox(
-                                                        width: Dimens.dwp10,
+                                                      const SizedBox(
+                                                        width: Dimens.dp10,
                                                       ),
                                                       SingleChildScrollView(
                                                         child: Row(

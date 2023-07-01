@@ -1,24 +1,44 @@
-import 'package:get/get.dart';
+import 'package:flutter/material.dart';
 
 class Dimens {
-  static final dhp5 = Dimens.getHeight(height: 5);
-  static final dhp10 = Dimens.getHeight(height: 10);
-  static final dhp15 = Dimens.getHeight(height: 15);
-  static final dhp20 = Dimens.getHeight(height: 20);
-  static final dhp25 = Dimens.getHeight(height: 25);
+  static const double dp2 = 2.0;
+  static const double dp4 = 4.0;
+  static const double dp8 = 8.0;
+  static const double dp6 = 6.0;
+  static const double dp10 = 10.0;
+  static const double dp11 = 11.0;
+  static const double dp12 = 12.0;
+  static const double dp14 = 14.0;
+  static const double dp16 = 16.0;
+  static const double dp18 = 18.0;
+  static const double dp20 = 20.0;
+  static const double dp22 = 22.0;
+  static const double dp24 = 24.0;
+  static const double dp26 = 26.0;
+  static const double dp28 = 28.0;
+  static const double dp30 = 30.0;
+  static const double dp32 = 32.0;
+  static const double dp34 = 34.0;
+  static const double dp36 = 36.0;
+  static const double dp38 = 38.0;
+  static const double dp40 = 40.0;
+  static const double dp48 = 48.0;
+  static const double dp50 = 50.0;
+  static const double dp60 = 60.0;
+  static const double dp100 = 100.0;
+  static const double dp145 = 145.0;
+  static const double dp150 = 150.0;
+  static const double dp200 = 200.0;
+  static const double dp250 = 250.0;
+  static const double dp300 = 300.0;
 
-  static final dwp5 = Dimens.getWidth(width: 5);
-  static final dwp10 = Dimens.getWidth(width: 10);
-  static final dwp15 = Dimens.getWidth(width: 15);
-  static final dwp20 = Dimens.getWidth(width: 20);
-
-  static getHeight({required height}) {
-    final x = Get.height / height;
-    return Get.height / x;
+  static getHeight({required BuildContext context, required height}) {
+    final x = MediaQuery.of(context).size.height / height;
+    return MediaQuery.of(context).size.height / x;
   }
 
-  static getWidth({required width}) {
-    final x = Get.width / width;
-    return Get.width / x;
+  static getWidth({required BuildContext context, required width}) {
+    final x = MediaQuery.of(context).size.width / width;
+    return MediaQuery.of(context).size.width / x;
   }
 }

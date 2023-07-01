@@ -20,7 +20,7 @@ class ProductCard extends StatelessWidget {
     final sneakerProvider = Provider.of<SneakerNotifier>(context);
     final favProvider = Provider.of<FavNotifier>(context);
     return SizedBox(
-      height: Dimens.getHeight(height: 300),
+      height: Dimens.getHeight(context: context,height: 300),
       child: sneakers.isEmpty
           ? const Center(
               child: CircularProgressIndicator(
@@ -44,9 +44,9 @@ class ProductCard extends StatelessWidget {
                         ));
                   },
                   child: Container(
-                    margin: EdgeInsets.only(right: Dimens.dwp15),
-                    padding: EdgeInsets.only(left: Dimens.dwp10),
-                    width: Dimens.getWidth(width: 200),
+                    margin:const EdgeInsets.only(right: Dimens.dp16),
+                    padding: const EdgeInsets.only(left: Dimens.dp10),
+                    width: Dimens.getWidth(context: context,width: 200),
                     decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(15)),
@@ -55,8 +55,8 @@ class ProductCard extends StatelessWidget {
                       children: [
                         Container(
                           padding: const EdgeInsets.all(10),
-                          height: Dimens.getHeight(height: 150),
-                          width: Dimens.getWidth(width: 190),
+                          height: Dimens.getHeight(context: context,height: 150),
+                          width: Dimens.getWidth(context: context,width: 190),
                           child: Stack(children: [
                             Align(
                                 alignment: Alignment.topRight,
@@ -99,7 +99,7 @@ class ProductCard extends StatelessWidget {
                           ]),
                         ),
                         SizedBox(
-                          height: Dimens.getHeight(height: 85),
+                          height: Dimens.getHeight(context: context,height: 85),
                           child: Text(
                             sneaker.name,
                             style: CustomTextStyle.headerStyle_30_black,

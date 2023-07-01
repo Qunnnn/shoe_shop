@@ -14,16 +14,16 @@ class AllLastestShoeWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
         child: StaggeredGridView.countBuilder(
           crossAxisCount: 2,
-          crossAxisSpacing: Dimens.dwp10,
+          crossAxisSpacing: Dimens.dp10,
           scrollDirection: Axis.vertical,
           itemCount: sneakers.length,
-          mainAxisSpacing: Dimens.dhp10,
+          mainAxisSpacing: Dimens.dp10,
           staggeredTileBuilder: (index) {
             return StaggeredTile.extent(
                 1,
                 index.isOdd
-                    ? Dimens.getHeight(height: 360)
-                    : Dimens.getHeight(height: 300));
+                    ? Dimens.getHeight(context: context, height: 330)
+                    : Dimens.getHeight(context: context, height: 300));
           },
           itemBuilder: (context, index) => AnimationConfiguration.staggeredGrid(
             position: index,
@@ -46,11 +46,17 @@ class AllLastestShoeWidget extends StatelessWidget {
                         fit: BoxFit.fill,
                       ),
                       SizedBox(
-                        height: index.isOdd ? Dimens.dhp20 : 0,
+                        height: index.isOdd ? Dimens.dp20 : 0,
                       ),
-                      Text(
-                        sneakers[index].name,
-                        style: CustomTextStyle.headerStyle_30_black,
+                      Expanded(
+                        child: SingleChildScrollView(
+                          child: Text(
+                            sneakers[index].name,
+                            style: CustomTextStyle.headerStyle_30_black,
+                            textAlign: TextAlign.start,
+                            softWrap: true,
+                          ),
+                        ),
                       ),
                       Text(
                         '\$${sneakers[index].price}',

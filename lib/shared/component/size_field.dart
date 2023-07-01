@@ -15,7 +15,7 @@ class SizeField extends StatelessWidget {
     final sneaker = sneakerNotifier.sneaker!;
     return SizedBox(
       height: Dimens.getHeight(
-        height: 50,
+       context: context, height: 50,
       ),
       child: ListView.builder(
         itemCount: sneakerNotifier.sneakerSizes.length,

@@ -38,9 +38,9 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
       body: Stack(
         children: [
           Container(
-            padding: EdgeInsets.symmetric(
-                horizontal: Dimens.dwp20, vertical: Dimens.dhp25),
-            height: Dimens.getHeight(height: 250),
+            padding: const EdgeInsets.symmetric(
+                horizontal: Dimens.dp20, vertical: Dimens.dp26),
+            height: Dimens.getHeight(context: context, height: 250),
             width: double.infinity,
             decoration: const BoxDecoration(
                 image: DecorationImage(
@@ -62,7 +62,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
           ),
           Padding(
             padding: EdgeInsets.only(
-                top: Dimens.getHeight(height: 180), left: Dimens.dwp20),
+                top: Dimens.getHeight(context: context, height: 180),
+                left: Dimens.dp20),
             child: TabBarView(controller: _tabController, children: [
               HomeWidget(sneakers: sneakers.maleList, tabIndex: 0),
               HomeWidget(sneakers: sneakers.femaleList, tabIndex: 1),

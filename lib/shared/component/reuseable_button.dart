@@ -10,8 +10,8 @@ class ReusableButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: Dimens.getHeight(height: 40),
-      width: Dimens.getWidth(width: 200),
+      height: Dimens.getHeight(context: context,height: 40),
+      width: Dimens.getWidth(context: context,width: 200),
       child: Material(
         color: Colors.black,
         clipBehavior: Clip.hardEdge,

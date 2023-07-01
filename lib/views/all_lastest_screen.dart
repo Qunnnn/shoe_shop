@@ -33,13 +33,13 @@ class _AllLastestScreenState extends State<AllLastestScreen>
   Widget build(BuildContext context) {
     final sneakers = context.read<SneakerNotifier>();
     return Scaffold(
-      backgroundColor: AppColors.backGrColor, 
+      backgroundColor: AppColors.backGrColor,
       body: Stack(
         children: [
           Container(
-            padding: EdgeInsets.symmetric(
-                horizontal: Dimens.dwp20, vertical: Dimens.dhp25),
-            height: Dimens.getHeight(height: 250),
+            padding: const EdgeInsets.symmetric(
+                horizontal: Dimens.dp20, vertical: Dimens.dp26),
+            height: Dimens.getHeight(context: context, height: 250),
             width: double.infinity,
             decoration: const BoxDecoration(
                 image: DecorationImage(
@@ -47,8 +47,8 @@ class _AllLastestScreenState extends State<AllLastestScreen>
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(
-                  height: Dimens.dhp10,
+                const SizedBox(
+                  height: Dimens.dp10,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -60,18 +60,18 @@ class _AllLastestScreenState extends State<AllLastestScreen>
                       child: Icon(
                         FontAwesomeIcons.xmark,
                         color: Colors.white,
-                        size: Dimens.getHeight(height: 25),
+                        size: Dimens.getHeight(context: context,height: 25),
                       ),
                     ),
                     Icon(
                       FontAwesomeIcons.filter,
                       color: Colors.white,
-                      size: Dimens.getHeight(height: 25),
+                      size: Dimens.getHeight(context: context,height: 25),
                     ),
                   ],
                 ),
-                SizedBox(
-                  height: Dimens.dhp10,
+               const SizedBox(
+                  height: Dimens.dp10,
                 ),
                 TabBarWidget(tabController: _tabController),
               ],
@@ -79,10 +79,10 @@ class _AllLastestScreenState extends State<AllLastestScreen>
           ),
           Padding(
             padding: EdgeInsets.only(
-                top: Dimens.getHeight(height: 100),
-                left: Dimens.dwp10,
-                right: Dimens.dwp10,
-                bottom: Dimens.dhp20),
+                top: Dimens.getHeight(context: context,height: 100),
+                left: Dimens.dp10,
+                right: Dimens.dp10,
+                bottom: Dimens.dp20),
             child: TabBarView(controller: _tabController, children: [
               AnimationLimiter(
                 child: AllLastestShoeWidget(

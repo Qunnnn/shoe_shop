@@ -32,9 +32,9 @@ class _FavScreenState extends State<FavScreen> {
       body: Stack(
         children: [
           Container(
-            padding: EdgeInsets.symmetric(
-                horizontal: Dimens.dwp20, vertical: Dimens.dhp25),
-            height: Dimens.getHeight(height: 250),
+            padding: const EdgeInsets.symmetric(
+                horizontal: Dimens.dp20, vertical: Dimens.dp26),
+            height: Dimens.getHeight(context: context, height: 250),
             width: double.infinity,
             decoration: const BoxDecoration(
                 image: DecorationImage(
@@ -43,13 +43,13 @@ class _FavScreenState extends State<FavScreen> {
           Align(
             alignment: Alignment.topCenter,
             child: Padding(
-              padding: EdgeInsets.symmetric(
-                  horizontal: Dimens.dwp15, vertical: Dimens.dhp10),
+              padding: const EdgeInsets.symmetric(
+                  horizontal: Dimens.dp16, vertical: Dimens.dp10),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(
-                    height: Dimens.dhp20,
+                  const SizedBox(
+                    height: Dimens.dp20,
                   ),
                   Text(
                     'My Favorite',
@@ -69,12 +69,14 @@ class _FavScreenState extends State<FavScreen> {
                             itemBuilder: (context, index) {
                               final sneaker = data.favorite[index];
                               return Padding(
-                                padding: EdgeInsets.only(bottom: Dimens.dhp10),
+                                padding:
+                                    const EdgeInsets.only(bottom: Dimens.dp10),
                                 child: Container(
-                                  padding: EdgeInsets.symmetric(
-                                      vertical: Dimens.dhp5,
-                                      horizontal: Dimens.dwp10),
-                                  height: Dimens.getHeight(height: 80),
+                                  padding: const EdgeInsets.symmetric(
+                                      vertical: Dimens.dp6,
+                                      horizontal: Dimens.dp10),
+                                  height: Dimens.getHeight(
+                                      context: context, height: 80),
                                   width: double.infinity,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(15),
@@ -86,8 +88,8 @@ class _FavScreenState extends State<FavScreen> {
                                         imageUrl: sneaker['imageUrl'],
                                         fit: BoxFit.fill,
                                       ),
-                                      SizedBox(
-                                        width: Dimens.dwp15,
+                                      const SizedBox(
+                                        width: Dimens.dp16,
                                       ),
                                       Column(
                                         crossAxisAlignment:
@@ -110,8 +112,8 @@ class _FavScreenState extends State<FavScreen> {
                                                 style: CustomTextStyle
                                                     .titleStyle_17_black,
                                               ),
-                                              SizedBox(
-                                                width: Dimens.dwp10,
+                                              const SizedBox(
+                                                width: Dimens.dp10,
                                               ),
                                               Row(
                                                 children: [
@@ -120,8 +122,8 @@ class _FavScreenState extends State<FavScreen> {
                                                     style: CustomTextStyle
                                                         .titleStyle_17_black,
                                                   ),
-                                                  SizedBox(
-                                                    width: Dimens.dwp10,
+                                                  const SizedBox(
+                                                    width: Dimens.dp10,
                                                   ),
                                                 ],
                                               ),
@@ -132,7 +134,8 @@ class _FavScreenState extends State<FavScreen> {
                                       const Spacer(),
                                       GestureDetector(
                                         onTap: () {
-                                          data.deleteCart(int.parse(sneaker['id']));
+                                          data.deleteCart(
+                                              int.parse(sneaker['id']));
                                           data.getFav();
                                           data.getFavIds();
                                         },

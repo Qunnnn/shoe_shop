@@ -15,8 +15,8 @@ class BottomNav extends StatelessWidget {
     final mainScreenNotifier = Provider.of<MainScreenNotifier>(context);
     return Container(
       margin: EdgeInsets.only(
-          bottom: Dimens.dhp15, left: Dimens.dwp10, right: Dimens.dwp10),
-      height: Dimens.getHeight(height: 60),
+          bottom: Dimens.dp14, left: Dimens.dp10, right: Dimens.dp10),
+      height: Dimens.getHeight(context: context,height: 60),
       decoration: BoxDecoration(
         color: AppColors.bottomNavColor,
         borderRadius: BorderRadius.circular(15),
