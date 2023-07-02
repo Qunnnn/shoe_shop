@@ -8,3 +8,4 @@ export 'tab_bar_widget.dart';
 export 'reuseable_button.dart';
 export 'size_field.dart';
 export 'product_detail_widget.dart';
+export 'reusable_top_image.dart';

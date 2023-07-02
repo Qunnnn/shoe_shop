@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:online_shop/controllers/controllers.dart';
+import 'package:online_shop/shared/component/component.dart';
 import 'package:online_shop/shared/preferences/preferences.dart';
 import 'package:provider/provider.dart';
 
@@ -29,19 +30,20 @@ class _CartScreenState extends State<CartScreen> {
     final data = context.watch<CartNotifier>();
     return Scaffold(
       backgroundColor: AppColors.backGrColor,
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Stack(
-          children: [
-            Column(
+      body: Stack(
+        children: [
+          const ReusableTopImage(),
+          Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(
-                  height: Dimens.dp20,
+                  height: Dimens.dp10,
                 ),
                 Text(
-                  'This is my Cart',
-                  style: CustomTextStyle.headerStyle_30_black,
+                  'My Cart',
+                  style: CustomTextStyle.headerStyle_30_white,
                 ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.7,
@@ -172,9 +174,9 @@ class _CartScreenState extends State<CartScreen> {
                         ),
                 )
               ],
-            )
-          ],
-        ),
+            ),
+          )
+        ],
       ),
     );
   }

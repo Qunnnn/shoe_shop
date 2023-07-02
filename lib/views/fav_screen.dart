@@ -4,6 +4,7 @@ import 'package:flutter/scheduler.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import '../controllers/controllers.dart';
+import '../shared/component/reusable_top_image.dart';
 import '../shared/preferences/preferences.dart';
 
 class FavScreen extends StatefulWidget {
@@ -31,15 +32,7 @@ class _FavScreenState extends State<FavScreen> {
       backgroundColor: AppColors.backGrColor,
       body: Stack(
         children: [
-          Container(
-            padding: const EdgeInsets.symmetric(
-                horizontal: Dimens.dp20, vertical: Dimens.dp26),
-            height: Dimens.getHeight(context: context) * 0.22,
-            width: double.infinity,
-            decoration: const BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage(AssetPath.topImage), fit: BoxFit.fill)),
-          ),
+          const ReusableTopImage(),
           Align(
             alignment: Alignment.topCenter,
             child: Padding(
@@ -49,7 +42,7 @@ class _FavScreenState extends State<FavScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const SizedBox(
-                    height: Dimens.dp20,
+                    height: Dimens.dp10,
                   ),
                   Text(
                     'My Favorite',
