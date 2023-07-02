@@ -39,7 +39,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
         children: [
           Container(
             padding: const EdgeInsets.symmetric(
-                horizontal: Dimens.dp20, vertical: Dimens.dp26),
+                horizontal: Dimens.dp20, vertical: Dimens.dp50),
             height: Dimens.getHeight(context: context) * 0.3,
             width: double.infinity,
             decoration: const BoxDecoration(

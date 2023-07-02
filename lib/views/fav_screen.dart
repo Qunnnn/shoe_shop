@@ -73,8 +73,8 @@ class _FavScreenState extends State<FavScreen> {
                                     const EdgeInsets.only(bottom: Dimens.dp10),
                                 child: Container(
                                   padding: const EdgeInsets.symmetric(
-                                      vertical: Dimens.dp6,
-                                      horizontal: Dimens.dp10),
+                                      vertical: Dimens.dp20,
+                                      horizontal: Dimens.dp20),
                                   height:
                                       Dimens.getHeight(context: context) * 0.12,
                                   width: double.infinity,
@@ -84,9 +84,12 @@ class _FavScreenState extends State<FavScreen> {
                                   ),
                                   child: Row(
                                     children: [
-                                      CachedNetworkImage(
-                                        imageUrl: sneaker['imageUrl'],
-                                        fit: BoxFit.fill,
+                                      Expanded(
+                                        flex: 1,
+                                        child: CachedNetworkImage(
+                                          imageUrl: sneaker['imageUrl'],
+                                          fit: BoxFit.fill,
+                                        ),
                                       ),
                                       const SizedBox(
                                         width: Dimens.dp16,
