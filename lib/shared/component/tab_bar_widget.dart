@@ -13,7 +13,7 @@ class TabBarWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: TabBar(
-          padding: const EdgeInsets.only(top: Dimens.dp14),
+          padding: const EdgeInsets.only(top: Dimens.dp10),
           controller: _tabController,
           indicatorColor: Colors.transparent,
           labelStyle: CustomTextStyle.titleStyle_17_grey,

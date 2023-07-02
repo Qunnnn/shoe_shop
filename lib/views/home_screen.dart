@@ -62,7 +62,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
           ),
           Padding(
             padding: EdgeInsets.only(
-                top: Dimens.getHeight(context: context) * 0.22,
+                top: Dimens.getHeight(context: context) * 0.24,
                 left: Dimens.dp20),
             child: TabBarView(controller: _tabController, children: [
               HomeWidget(sneakers: sneakers.maleList, tabIndex: 0),
