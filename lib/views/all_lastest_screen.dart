@@ -39,7 +39,7 @@ class _AllLastestScreenState extends State<AllLastestScreen>
           Container(
             padding: const EdgeInsets.symmetric(
                 horizontal: Dimens.dp20, vertical: Dimens.dp26),
-            height: Dimens.getHeight(context: context, height: 250),
+            height: Dimens.getHeight(context: context) * 0.2,
             width: double.infinity,
             decoration: const BoxDecoration(
                 image: DecorationImage(
@@ -60,18 +60,15 @@ class _AllLastestScreenState extends State<AllLastestScreen>
                       child: Icon(
                         FontAwesomeIcons.xmark,
                         color: Colors.white,
-                        size: Dimens.getHeight(context: context,height: 25),
+                        size: Dimens.getHeight(context: context) * 0.03,
                       ),
                     ),
                     Icon(
                       FontAwesomeIcons.filter,
                       color: Colors.white,
-                      size: Dimens.getHeight(context: context,height: 25),
+                      size: Dimens.getHeight(context: context) * 0.03,
                     ),
                   ],
-                ),
-               const SizedBox(
-                  height: Dimens.dp10,
                 ),
                 TabBarWidget(tabController: _tabController),
               ],
@@ -79,7 +76,7 @@ class _AllLastestScreenState extends State<AllLastestScreen>
           ),
           Padding(
             padding: EdgeInsets.only(
-                top: Dimens.getHeight(context: context,height: 100),
+                top: Dimens.getHeight(context: context) * 0.115,
                 left: Dimens.dp10,
                 right: Dimens.dp10,
                 bottom: Dimens.dp20),

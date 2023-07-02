@@ -20,7 +20,7 @@ class HomeWidget extends StatelessWidget {
       children: [
         ProductCard(sneakers: sneakers),
         const SizedBox(
-          height: Dimens.dp10,
+          height: Dimens.dp20,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -55,8 +55,8 @@ class HomeWidget extends StatelessWidget {
             ),
           ],
         ),
-       const SizedBox(
-          height: Dimens.dp10,
+        const SizedBox(
+          height: Dimens.dp20,
         ),
         NewShoe(
           sneakers: sneakers,

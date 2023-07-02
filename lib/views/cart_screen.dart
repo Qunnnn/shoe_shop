@@ -80,8 +80,9 @@ class _CartScreenState extends State<CartScreen> {
                                       padding: const EdgeInsets.symmetric(
                                           vertical: Dimens.dp6,
                                           horizontal: Dimens.dp10),
-                                      height: Dimens.getHeight(
-                                          context: context, height: 100),
+                                      height:
+                                          Dimens.getHeight(context: context) *
+                                              0.12,
                                       width: double.infinity,
                                       decoration: const BoxDecoration(
                                         color: Colors.white,

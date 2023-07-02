@@ -34,7 +34,7 @@ class _FavScreenState extends State<FavScreen> {
           Container(
             padding: const EdgeInsets.symmetric(
                 horizontal: Dimens.dp20, vertical: Dimens.dp26),
-            height: Dimens.getHeight(context: context, height: 250),
+            height: Dimens.getHeight(context: context) * 0.22,
             width: double.infinity,
             decoration: const BoxDecoration(
                 image: DecorationImage(
@@ -75,8 +75,8 @@ class _FavScreenState extends State<FavScreen> {
                                   padding: const EdgeInsets.symmetric(
                                       vertical: Dimens.dp6,
                                       horizontal: Dimens.dp10),
-                                  height: Dimens.getHeight(
-                                      context: context, height: 80),
+                                  height:
+                                      Dimens.getHeight(context: context) * 0.12,
                                   width: double.infinity,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(15),

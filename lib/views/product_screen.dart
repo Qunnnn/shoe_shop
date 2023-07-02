@@ -44,7 +44,7 @@ class _ProductScreenState extends State<ProductScreen> {
         slivers: [
           SliverAppBar(
             automaticallyImplyLeading: false,
-            expandedHeight: MediaQuery.of(context).size.height,
+            expandedHeight: Dimens.getHeight(context: context),
             title: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [

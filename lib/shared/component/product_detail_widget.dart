@@ -4,7 +4,6 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:online_shop/controllers/controllers.dart';
 import 'package:online_shop/shared/component/component.dart';
-import 'package:online_shop/views/fav_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../preferences/preferences.dart';
@@ -28,7 +27,7 @@ class ProductDetailWidget extends StatelessWidget {
     return Stack(
       children: [
         SizedBox(
-          height: Dimens.getHeight(context: context,height: 300),
+          height: Dimens.getHeight(context: context) * 0.3,
           width: double.infinity,
           child: PageView.builder(
             controller: _pageController,
@@ -44,8 +43,8 @@ class ProductDetailWidget extends StatelessWidget {
                         CachedNetworkImage(imageUrl: sneaker.imageUrl[index]),
                   ),
                   Positioned(
-                      top: Dimens.getHeight(context: context,height: 70),
-                      right: Dimens.getWidth(context: context,width: 30),
+                      top: Dimens.getHeight(context: context) * 0.08,
+                      right: Dimens.getWidth(context: context) * 0.04,
                       child: GestureDetector(
                         onTap: () {
                           if (favProvider.ids.contains(sneaker.id)) {
@@ -82,8 +81,8 @@ class ProductDetailWidget extends StatelessWidget {
                         effect: JumpingDotEffect(
                           activeDotColor: Colors.black,
                           dotColor: Colors.grey,
-                          dotHeight: Dimens.getHeight(context: context,height: 10),
-                          dotWidth: Dimens.getWidth(context: context,width: 10),
+                          dotHeight: Dimens.getHeight(context: context) * 0.01,
+                          dotWidth: Dimens.getWidth(context: context) * 0.02,
                         ),
                       ),
                     ),
@@ -97,7 +96,7 @@ class ProductDetailWidget extends StatelessWidget {
           alignment: Alignment.bottomCenter,
           child: Container(
             padding: const EdgeInsets.all(10),
-            height: Dimens.getHeight(context: context,height: 500),
+            height: Dimens.getHeight(context: context) * 0.75,
             width: double.infinity,
             decoration: const BoxDecoration(
               color: Colors.white,
@@ -154,8 +153,10 @@ class ProductDetailWidget extends StatelessWidget {
                               3,
                               (index) => Container(
                                     margin: const EdgeInsets.only(left: 5),
-                                    height: Dimens.getHeight(context: context,height: 15),
-                                    width: Dimens.getWidth(context: context,width: 15),
+                                    height: Dimens.getHeight(context: context) *
+                                        0.03,
+                                    width: Dimens.getWidth(context: context) *
+                                        0.03,
                                     child: CircleAvatar(
                                       backgroundColor: index == 0
                                           ? Colors.black
@@ -184,7 +185,9 @@ class ProductDetailWidget extends StatelessWidget {
                       )
                     ],
                   ),
+                  defaultPadding,
                   const SizeField(),
+                  defaultPadding,
                   const Divider(
                     color: Colors.black54,
                   ),
@@ -212,9 +215,7 @@ class ProductDetailWidget extends StatelessWidget {
                       },
                     ),
                   ),
-                  SizedBox(
-                    height: Dimens.getHeight(context: context,height: 30),
-                  ),
+                  const SizedBox(height: Dimens.dp40),
                 ],
               ),
             ),

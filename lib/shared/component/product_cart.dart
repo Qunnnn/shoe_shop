@@ -20,7 +20,7 @@ class ProductCard extends StatelessWidget {
     final sneakerProvider = Provider.of<SneakerNotifier>(context);
     final favProvider = Provider.of<FavNotifier>(context);
     return SizedBox(
-      height: Dimens.getHeight(context: context,height: 300),
+      height: Dimens.getHeight(context: context) * 0.36,
       child: sneakers.isEmpty
           ? const Center(
               child: CircularProgressIndicator(
@@ -44,9 +44,9 @@ class ProductCard extends StatelessWidget {
                         ));
                   },
                   child: Container(
-                    margin:const EdgeInsets.only(right: Dimens.dp16),
+                    margin: const EdgeInsets.only(right: Dimens.dp16),
                     padding: const EdgeInsets.only(left: Dimens.dp10),
-                    width: Dimens.getWidth(context: context,width: 200),
+                    width: Dimens.getWidth(context: context) * 0.42,
                     decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(15)),
@@ -55,55 +55,57 @@ class ProductCard extends StatelessWidget {
                       children: [
                         Container(
                           padding: const EdgeInsets.all(10),
-                          height: Dimens.getHeight(context: context,height: 150),
-                          width: Dimens.getWidth(context: context,width: 190),
+                          height: Dimens.getHeight(context: context) * 0.17,
+                          width: Dimens.getWidth(context: context) * 0.4,
                           child: Stack(children: [
                             Align(
-                                alignment: Alignment.topRight,
-                                child: GestureDetector(
-                                  onTap: () {
-                                    if (favProvider.ids.contains(sneaker.id)) {
-                                      favProvider
-                                          .deleteCart(int.parse(sneaker.id));
-                                      favProvider.getFavIds();
-                                      favProvider.getFav();
-                                    } else {
-                                      favProvider
-                                          .createFav(int.parse(sneaker.id), {
-                                        'id': sneaker.id,
-                                        'category': sneaker.category,
-                                        'imageUrl': sneaker.imageUrl[0],
-                                        'name': sneaker.name,
-                                        'price': sneaker.price,
-                                      });
-                                      favProvider.getFavIds();
-                                      favProvider.getFav();
-                                    }
-                                  },
-                                  child: Icon(
-                                      favProvider.ids.contains(sneaker.id)
-                                          ? FontAwesomeIcons.solidHeart
-                                          : FontAwesomeIcons.heart,
-                                      color:
-                                          favProvider.ids.contains(sneaker.id)
-                                              ? Colors.pink[400]
-                                              : Colors.grey),
-                                )),
+                              alignment: Alignment.topRight,
+                              child: GestureDetector(
+                                onTap: () {
+                                  if (favProvider.ids.contains(sneaker.id)) {
+                                    favProvider
+                                        .deleteCart(int.parse(sneaker.id));
+                                    favProvider.getFavIds();
+                                    favProvider.getFav();
+                                  } else {
+                                    favProvider
+                                        .createFav(int.parse(sneaker.id), {
+                                      'id': sneaker.id,
+                                      'category': sneaker.category,
+                                      'imageUrl': sneaker.imageUrl[0],
+                                      'name': sneaker.name,
+                                      'price': sneaker.price,
+                                    });
+                                    favProvider.getFavIds();
+                                    favProvider.getFav();
+                                  }
+                                },
+                                child: Icon(
+                                    favProvider.ids.contains(sneaker.id)
+                                        ? FontAwesomeIcons.solidHeart
+                                        : FontAwesomeIcons.heart,
+                                    color: favProvider.ids.contains(sneaker.id)
+                                        ? Colors.pink[400]
+                                        : Colors.grey),
+                              ),
+                            ),
                             Align(
                               alignment: Alignment.center,
                               child: CachedNetworkImage(
                                 imageUrl: sneaker.imageUrl[0],
-                                fit: BoxFit.cover,
+                                fit: BoxFit.fill,
                               ),
                             ),
                           ]),
                         ),
-                        SizedBox(
-                          height: Dimens.getHeight(context: context,height: 85),
-                          child: Text(
-                            sneaker.name,
-                            style: CustomTextStyle.headerStyle_30_black,
-                            overflow: TextOverflow.clip,
+                        Expanded(
+                          child: SingleChildScrollView(
+                            scrollDirection: Axis.vertical,
+                            child: Text(
+                              sneaker.name,
+                              style: CustomTextStyle.headerStyle_30_black,
+                              overflow: TextOverflow.clip,
+                            ),
                           ),
                         ),
                         Text(
@@ -113,6 +115,9 @@ class ProductCard extends StatelessWidget {
                         Text(
                           '\$${sneaker.price}',
                           style: CustomTextStyle.titleStyle_20_black,
+                        ),
+                        const SizedBox(
+                          height: Dimens.dp10,
                         ),
                       ],
                     ),

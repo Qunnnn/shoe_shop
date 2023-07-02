@@ -9,7 +9,7 @@ class NewShoe extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: Dimens.getHeight(context: context,height: 130),
+      height: Dimens.getHeight(context: context) * 0.15,
       child: sneakers.isEmpty
           ? const Center(
               child: CircularProgressIndicator(
@@ -21,7 +21,7 @@ class NewShoe extends StatelessWidget {
               itemBuilder: (context, index) {
                 return Container(
                   margin: const EdgeInsets.only(right: Dimens.dp16),
-                  width: Dimens.getWidth(context: context, width: 120),
+                  width: Dimens.getWidth(context: context) * 0.3,
                   decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(15)),

@@ -32,13 +32,11 @@ class Dimens {
   static const double dp250 = 250.0;
   static const double dp300 = 300.0;
 
-  static getHeight({required BuildContext context, required height}) {
-    final x = MediaQuery.of(context).size.height / height;
-    return MediaQuery.of(context).size.height / x;
+  static getHeight({required BuildContext context}) {
+    return MediaQuery.of(context).size.height;
   }
 
-  static getWidth({required BuildContext context, required width}) {
-    final x = MediaQuery.of(context).size.width / width;
-    return MediaQuery.of(context).size.width / x;
+  static getWidth({required BuildContext context}) {
+   return MediaQuery.of(context).size.width;
   }
 }
