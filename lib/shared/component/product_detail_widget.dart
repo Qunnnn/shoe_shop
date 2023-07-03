@@ -211,6 +211,7 @@ class ProductDetailWidget extends StatelessWidget {
                           'price': sneaker.price,
                           'qty': 1,
                         });
+                        cartNotifier.getCart();
                         Navigator.pop(context);
                       },
                     ),

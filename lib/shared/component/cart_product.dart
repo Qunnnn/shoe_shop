@@ -21,31 +21,17 @@ class CartProduct extends StatefulWidget {
 
 class _CartProductState extends State<CartProduct> {
   late int quantity;
-  late final CartNotifier cartNotifier;
-
-  putAt() {
-    if (quantity >= 20) quantity = 20;
-    cartNotifier.putCart(int.parse(widget.sneaker['id']), {
-      'id': widget.sneaker['id'],
-      'name': widget.sneaker['name'],
-      'category': widget.sneaker['category'],
-      'imageUrl': widget.sneaker['imageUrl'],
-      'sizes': widget.sneaker['sizes'],
-      'price': widget.sneaker['price'],
-      'qty': quantity,
-    });
-    cartNotifier.getCart();
-  }
 
   @override
   void initState() {
-    cartNotifier = Provider.of<CartNotifier>(context, listen: false);
     quantity = widget.sneaker['qty'];
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    final CartNotifier cartNotifier =
+        Provider.of<CartNotifier>(context, listen: false);
     return Padding(
       padding: const EdgeInsets.only(bottom: Dimens.dp10),
       child: ClipRRect(
@@ -150,7 +136,18 @@ class _CartProductState extends State<CartProduct> {
                                 onTap: () {
                                   setState(() {
                                     quantity--;
-                                    putAt();
+                                    if (quantity <= 1) quantity = 1;
+                                    cartNotifier.putCart(
+                                        int.parse(widget.sneaker['id']), {
+                                      'id': widget.sneaker['id'],
+                                      'name': widget.sneaker['name'],
+                                      'category': widget.sneaker['category'],
+                                      'imageUrl': widget.sneaker['imageUrl'],
+                                      'sizes': widget.sneaker['sizes'],
+                                      'price': widget.sneaker['price'],
+                                      'qty': quantity,
+                                    });
+                                    cartNotifier.getCart();
                                   });
                                 },
                                 child: const Center(
@@ -175,7 +172,18 @@ class _CartProductState extends State<CartProduct> {
                                 onTap: () {
                                   setState(() {
                                     quantity++;
-                                    putAt();
+                                    if (quantity >= 20) quantity = 20;
+                                    cartNotifier.putCart(
+                                        int.parse(widget.sneaker['id']), {
+                                      'id': widget.sneaker['id'],
+                                      'name': widget.sneaker['name'],
+                                      'category': widget.sneaker['category'],
+                                      'imageUrl': widget.sneaker['imageUrl'],
+                                      'sizes': widget.sneaker['sizes'],
+                                      'price': widget.sneaker['price'],
+                                      'qty': quantity,
+                                    });
+                                    cartNotifier.getCart();
                                   });
                                 },
                                 child: const Center(
