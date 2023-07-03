@@ -1,6 +1,6 @@
 export 'bottom_nav_icon.dart';
 export 'bottom_nav.dart';
-export 'product_cart.dart';
+export 'product_card.dart';
 export 'new_shoe.dart';
 export 'home_widget.dart';
 export 'all_lastest_shoe.dart';
@@ -9,3 +9,4 @@ export 'reuseable_button.dart';
 export 'size_field.dart';
 export 'product_detail_widget.dart';
 export 'reusable_top_image.dart';
+export 'cart_product.dart';

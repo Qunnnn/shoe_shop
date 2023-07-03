@@ -17,6 +17,10 @@ class CartNotifier extends ChangeNotifier {
     await cartBox.put(key, value);
   }
 
+  Future<void> putCart(int key, Map<String, dynamic> value) async {
+    await cartBox.put(key, value);
+  }
+
   getCart() {
     final cartData = cartBox.keys.map(
       (key) {

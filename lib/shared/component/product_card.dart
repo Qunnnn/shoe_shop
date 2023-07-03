@@ -112,9 +112,19 @@ class ProductCard extends StatelessWidget {
                           sneaker.category,
                           style: CustomTextStyle.titleStyle_15_grey,
                         ),
-                        Text(
-                          '\$${sneaker.price}',
-                          style: CustomTextStyle.titleStyle_20_black,
+                        RichText(
+                          text: TextSpan(
+                              text: '\$${sneaker.price} ',
+                              style: CustomTextStyle.titleStyle_20_black,
+                              children: [
+                                TextSpan(
+                                  text: '\$${sneaker.oldPrice}',
+                                  style: CustomTextStyle.titleStyle_15_grey
+                                      .copyWith(
+                                          decoration:
+                                              TextDecoration.lineThrough),
+                                ),
+                              ]),
                         ),
                         const SizedBox(
                           height: Dimens.dp10,
