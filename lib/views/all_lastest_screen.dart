@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
-import '../controllers/sneaker_notifier.dart';
+import '../view_model/sneaker_notifier.dart';
 import '../shared/component/component.dart';
 import '../shared/preferences/preferences.dart';
 

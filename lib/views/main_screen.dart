@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:online_shop/controllers/main_screen_notifier.dart';
+import 'package:online_shop/view_model/main_screen_notifier.dart';
 import 'package:online_shop/views/views.dart';
 import 'package:provider/provider.dart';
 import '../shared/component/component.dart';

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:online_shop/controllers/controllers.dart';
+import 'package:online_shop/view_model/view_model.dart';
 import 'package:online_shop/shared/preferences/constant.dart';
 import 'package:online_shop/views/main_screen.dart';
 import 'package:provider/provider.dart';

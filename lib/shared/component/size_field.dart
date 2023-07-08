@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../controllers/sneaker_notifier.dart';
+import '../../view_model/sneaker_notifier.dart';
 import '../preferences/preferences.dart';
 
 class SizeField extends StatelessWidget {

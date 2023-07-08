@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:online_shop/shared/component/component.dart';
 import 'package:provider/provider.dart';
-import '../../controllers/main_screen_notifier.dart';
+import '../../view_model/main_screen_notifier.dart';
 import '../preferences/preferences.dart';
 
 class BottomNav extends StatelessWidget {

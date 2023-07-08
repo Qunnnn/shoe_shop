@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:online_shop/controllers/controllers.dart';
+import 'package:online_shop/view_model/view_model.dart';
 import 'package:online_shop/shared/component/component.dart';
 import 'package:online_shop/shared/preferences/preferences.dart';
 import 'package:provider/provider.dart';

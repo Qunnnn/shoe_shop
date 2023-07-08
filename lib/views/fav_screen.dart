@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
-import '../controllers/controllers.dart';
+import '../view_model/view_model.dart';
 import '../shared/component/reusable_top_image.dart';
 import '../shared/preferences/preferences.dart';
 

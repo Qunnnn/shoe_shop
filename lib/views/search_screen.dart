@@ -5,7 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:online_shop/shared/component/component.dart';
 import 'package:online_shop/views/product_screen.dart';
 import 'package:provider/provider.dart';
-import '../controllers/sneaker_notifier.dart';
+import '../view_model/sneaker_notifier.dart';
 import '../models/sneaker_model.dart';
 import '../shared/preferences/preferences.dart';
 

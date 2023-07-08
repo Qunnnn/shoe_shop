@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:online_shop/controllers/controllers.dart';
+import 'package:online_shop/view_model/view_model.dart';
 import 'package:online_shop/models/sneaker_model.dart';
 import 'package:online_shop/views/views.dart';
 import 'package:provider/provider.dart';
