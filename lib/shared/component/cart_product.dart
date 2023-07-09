@@ -7,7 +7,7 @@ import '../../view_model/view_model.dart';
 import '../preferences/preferences.dart';
 
 class CartProduct extends StatefulWidget {
-  CartProduct({
+  const CartProduct({
     super.key,
     required this.data,
     required this.sneaker,
@@ -45,8 +45,6 @@ class _CartProductState extends State<CartProduct> {
 
   @override
   Widget build(BuildContext context) {
-    final CartNotifier cartNotifier =
-        Provider.of<CartNotifier>(context, listen: false);
     return Padding(
       padding: const EdgeInsets.only(bottom: Dimens.dp10),
       child: ClipRRect(
