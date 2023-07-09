@@ -31,7 +31,6 @@ class _AllLastestScreenState extends State<AllLastestScreen>
 
   @override
   Widget build(BuildContext context) {
-    final sneakers = context.read<SneakerNotifier>();
     return Scaffold(
       backgroundColor: AppColors.backGrColor,
       body: Stack(
@@ -80,19 +79,24 @@ class _AllLastestScreenState extends State<AllLastestScreen>
                 left: Dimens.dp10,
                 right: Dimens.dp10,
                 bottom: Dimens.dp20),
-            child: TabBarView(controller: _tabController, children: [
-              AnimationLimiter(
-                child: AllLastestShoeWidget(
-                  sneakers: sneakers.maleList,
-                ),
-              ),
-              AllLastestShoeWidget(
-                sneakers: sneakers.femaleList,
-              ),
-              AllLastestShoeWidget(
-                sneakers: sneakers.kidList,
-              ),
-            ]),
+            child: Builder(
+              builder: (context) {
+                final sneakers = context.read<SneakerNotifier>();
+                return TabBarView(controller: _tabController, children: [
+                  AnimationLimiter(
+                    child: AllLastestShoeWidget(
+                      sneakers: sneakers.maleList,
+                    ),
+                  ),
+                  AllLastestShoeWidget(
+                    sneakers: sneakers.femaleList,
+                  ),
+                  AllLastestShoeWidget(
+                    sneakers: sneakers.kidList,
+                  ),
+                ]);
+              },
+            ),
           ),
         ],
       ),

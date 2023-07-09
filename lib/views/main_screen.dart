@@ -19,10 +19,14 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final mainScreenNotifier = context.watch<MainScreenNotifier>();
     return Scaffold(
       backgroundColor: AppColors.backGrColor,
-      body: screenList[mainScreenNotifier.pageIndex],
+      body: Builder(
+        builder: (context) {
+          final mainScreenNotifier = context.watch<MainScreenNotifier>();
+          return screenList[mainScreenNotifier.pageIndex];
+        },
+      ),
       bottomNavigationBar: const BottomNav(),
     );
   }

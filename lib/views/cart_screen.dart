@@ -25,7 +25,6 @@ class _CartScreenState extends State<CartScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final data = context.watch<CartNotifier>();
     return Scaffold(
       backgroundColor: AppColors.backGrColor,
       body: Padding(
@@ -45,23 +44,27 @@ class _CartScreenState extends State<CartScreen> {
                     'My Cart',
                     style: CustomTextStyle.headerStyle_30_white,
                   ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.7,
-                    child: data.cart.isEmpty
-                        ? Center(
-                            child: Text(
-                              'You have not add to cart yet!',
-                              style: CustomTextStyle.titleStyle_17_black,
+                  Builder(builder: (context) {
+                    final data = context.watch<CartNotifier>();
+                    return SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.7,
+                      child: data.cart.isEmpty
+                          ? Center(
+                              child: Text(
+                                'You have not add to cart yet!',
+                                style: CustomTextStyle.titleStyle_17_black,
+                              ),
+                            )
+                          : ListView.builder(
+                              itemCount: data.cart.length,
+                              itemBuilder: (context, index) {
+                                final sneaker = data.cart[index];
+                                return CartProduct(
+                                    data: data, sneaker: sneaker);
+                              },
                             ),
-                          )
-                        : ListView.builder(
-                            itemCount: data.cart.length,
-                            itemBuilder: (context, index) {
-                              final sneaker = data.cart[index];
-                              return CartProduct(data: data, sneaker: sneaker);
-                            },
-                          ),
-                  )
+                    );
+                  })
                 ],
               ),
             ),

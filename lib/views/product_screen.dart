@@ -38,7 +38,6 @@ class _ProductScreenState extends State<ProductScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final sneaker = context.watch<SneakerNotifier>();
     return Scaffold(
       body: CustomScrollView(
         slivers: [
@@ -62,13 +61,16 @@ class _ProductScreenState extends State<ProductScreen> {
                 )
               ],
             ),
-            flexibleSpace: FlexibleSpaceBar(
-              background: sneaker.sneaker == null
-                  ? const Center(child: CircularProgressIndicator())
-                  : ProductDetailWidget(
-                      pageController: _pageController,
-                      defaultPadding: defaultPadding),
-            ),
+            flexibleSpace: Builder(builder: (context) {
+              final sneaker = context.watch<SneakerNotifier>();
+              return FlexibleSpaceBar(
+                background: sneaker.sneaker == null
+                    ? const Center(child: CircularProgressIndicator())
+                    : ProductDetailWidget(
+                        pageController: _pageController,
+                        defaultPadding: defaultPadding),
+              );
+            }),
           )
         ],
       ),

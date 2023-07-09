@@ -32,7 +32,6 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    final sneakers = context.watch<SneakerNotifier>();
     return Scaffold(
       backgroundColor: AppColors.backGrColor,
       body: Stack(
@@ -64,11 +63,16 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
             padding: EdgeInsets.only(
                 top: Dimens.getHeight(context: context) * 0.24,
                 left: Dimens.dp20),
-            child: TabBarView(controller: _tabController, children: [
-              HomeWidget(sneakers: sneakers.maleList, tabIndex: 0),
-              HomeWidget(sneakers: sneakers.femaleList, tabIndex: 1),
-              HomeWidget(sneakers: sneakers.kidList, tabIndex: 2),
-            ]),
+            child: Builder(
+              builder: (BuildContext context) {
+                final sneakers = context.watch<SneakerNotifier>();
+                return TabBarView(controller: _tabController, children: [
+                  HomeWidget(sneakers: sneakers.maleList, tabIndex: 0),
+                  HomeWidget(sneakers: sneakers.femaleList, tabIndex: 1),
+                  HomeWidget(sneakers: sneakers.kidList, tabIndex: 2),
+                ]);
+              },
+            ),
           ),
         ],
       ),
