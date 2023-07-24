@@ -58,7 +58,8 @@ class ProductCard extends StatelessWidget {
                           width: Dimens.getWidth(context: context) * 0.4,
                           child: Stack(children: [
                             Builder(builder: (context) {
-                              final favProvider = Provider.of<FavNotifier>(context);
+                              final favProvider =
+                                  Provider.of<FavNotifier>(context);
                               return Align(
                                 alignment: Alignment.topRight,
                                 child: GestureDetector(
@@ -94,9 +95,18 @@ class ProductCard extends StatelessWidget {
                             }),
                             Align(
                               alignment: Alignment.center,
-                              child: CachedNetworkImage(
-                                imageUrl: sneaker.imageUrl[0],
-                                fit: BoxFit.fill,
+                              child: Hero(
+                                tag: sneaker.id + '0',
+                                placeholderBuilder:
+                                    (context, heroSize, child) =>
+                                        CachedNetworkImage(
+                                  imageUrl: sneaker.imageUrl[0],
+                                  fit: BoxFit.fill,
+                                ),
+                                child: CachedNetworkImage(
+                                  imageUrl: sneaker.imageUrl[0],
+                                  fit: BoxFit.fill,
+                                ),
                               ),
                             ),
                           ]),

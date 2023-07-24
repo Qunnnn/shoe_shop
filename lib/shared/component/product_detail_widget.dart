@@ -21,7 +21,6 @@ class ProductDetailWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cartNotifier = context.read<CartNotifier>();
-
     return Stack(
       children: [
         SizedBox(
@@ -40,8 +39,10 @@ class ProductDetailWidget extends StatelessWidget {
                     Container(
                       width: double.infinity,
                       color: Colors.grey[400],
-                      child:
-                          CachedNetworkImage(imageUrl: sneaker.imageUrl[index]),
+                      child: Hero(
+                          tag: sneaker.id + index.toString(),
+                          child: CachedNetworkImage(
+                              imageUrl: sneaker.imageUrl[index])),
                     ),
                     Builder(builder: (context) {
                       final favProvider = Provider.of<FavNotifier>(context);

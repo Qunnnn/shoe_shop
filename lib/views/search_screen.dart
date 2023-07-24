@@ -197,8 +197,13 @@ class _SearchScreenState extends State<SearchScreen> {
                                     padding: const EdgeInsets.all(10.0),
                                     child: Row(
                                       children: [
-                                        CachedNetworkImage(
-                                            imageUrl: sneaker.imageUrl[0]),
+                                        Hero(
+                                          tag: sneaker.id + '0',
+                                          placeholderBuilder: (context, heroSize, child) =>CachedNetworkImage(
+                                              imageUrl: sneaker.imageUrl[0]),
+                                          child: CachedNetworkImage(
+                                              imageUrl: sneaker.imageUrl[0]),
+                                        ),
                                         const SizedBox(
                                           width: Dimens.dp18,
                                         ),
