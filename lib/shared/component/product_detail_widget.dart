@@ -20,7 +20,6 @@ class ProductDetailWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cartNotifier = context.read<CartNotifier>();
     return Stack(
       children: [
         SizedBox(
@@ -209,23 +208,29 @@ class ProductDetailWidget extends StatelessWidget {
                       style: CustomTextStyle.titleStyle_15_grey,
                     ),
                     defaultPadding,
-                    Center(
-                      child: ReusableButton(
-                        label: 'Add to bag',
-                        onTap: () async {
-                          await cartNotifier.createCart(int.parse(sneaker.id), {
-                            'id': sneaker.id,
-                            'name': sneaker.name,
-                            'category': sneaker.category,
-                            'imageUrl': sneaker.imageUrl[0],
-                            'sizes': sneaker.isSelectedSize,
-                            'price': sneaker.price,
-                            'qty': 1,
-                          });
-                          cartNotifier.getCart();
-                          Navigator.pop(context);
-                        },
-                      ),
+                    Builder(
+                      builder: (context) {
+                        final cartNotifier = context.watch<CartNotifier>();
+                        return Center(
+                          child: ReusableButton(
+                            label: 'Add to bag',
+                            onTap: () async {
+                              await cartNotifier
+                                  .createCart(int.parse(sneaker.id), {
+                                'id': sneaker.id,
+                                'name': sneaker.name,
+                                'category': sneaker.category,
+                                'imageUrl': sneaker.imageUrl[0],
+                                'sizes': sneaker.isSelectedSize,
+                                'price': sneaker.price,
+                                'qty': 1,
+                              });
+                              cartNotifier.getCart();
+                              Navigator.pop(context);
+                            },
+                          ),
+                        );
+                      },
                     ),
                     const SizedBox(height: Dimens.dp40),
                   ],
