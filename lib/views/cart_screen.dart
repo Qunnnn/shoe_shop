@@ -47,7 +47,7 @@ class _CartScreenState extends State<CartScreen> {
                   Builder(builder: (context) {
                     final data = context.watch<CartNotifier>();
                     return SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.7,
+                      height: Dimens.getHeight(context: context) * 0.7,
                       child: data.cart.isEmpty
                           ? Center(
                               child: Text(

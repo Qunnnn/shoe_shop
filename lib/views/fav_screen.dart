@@ -50,7 +50,7 @@ class _FavScreenState extends State<FavScreen> {
                   Builder(builder: (context) {
                     final data = context.watch<FavNotifier>();
                     return SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.7,
+                      height: Dimens.getHeight(context: context) * 0.7,
                       child: data.favorite.isEmpty
                           ? Center(
                               child: Text(
