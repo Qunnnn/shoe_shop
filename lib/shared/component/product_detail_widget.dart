@@ -25,79 +25,88 @@ class ProductDetailWidget extends StatelessWidget {
         SizedBox(
           height: Dimens.getHeight(context: context) * 0.3,
           width: double.infinity,
-          child: Builder(builder: (context) {
-            final sneakerNotifier = context.watch<SneakerNotifier>();
-            final sneaker = sneakerNotifier.sneaker!;
-            return PageView.builder(
-              controller: _pageController,
-              itemCount: sneaker.imageUrl.length,
-              onPageChanged: (value) {},
-              itemBuilder: (context, index) {
-                return Stack(
-                  children: [
-                    Container(
-                      width: double.infinity,
-                      color: Colors.grey[400],
-                      child: Hero(
-                          tag: sneaker.id + index.toString(),
-                          child: CachedNetworkImage(
-                              imageUrl: sneaker.imageUrl[index])),
-                    ),
-                    Builder(builder: (context) {
-                      final favProvider = Provider.of<FavNotifier>(context);
-                      return Positioned(
-                          top: Dimens.getHeight(context: context) * 0.08,
-                          right: Dimens.getWidth(context: context) * 0.04,
-                          child: GestureDetector(
-                            onTap: () {
-                              if (favProvider.ids.contains(sneaker.id)) {
-                                favProvider.deleteCart(int.parse(sneaker.id));
-                                favProvider.getFavIds();
-                                favProvider.getFav();
-                              } else {
-                                favProvider.createFav(int.parse(sneaker.id), {
-                                  'id': sneaker.id,
-                                  'category': sneaker.category,
-                                  'imageUrl': sneaker.imageUrl[0],
-                                  'name': sneaker.name,
-                                  'price': sneaker.price,
-                                });
-                                favProvider.getFavIds();
-                                favProvider.getFav();
-                              }
-                            },
-                            child: Icon(
-                                favProvider.ids.contains(sneaker.id)
-                                    ? FontAwesomeIcons.solidHeart
-                                    : FontAwesomeIcons.heart,
-                                color: favProvider.ids.contains(sneaker.id)
-                                    ? Colors.pink[400]
-                                    : Colors.grey),
-                          ));
-                    }),
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: Dimens.dp26),
-                      child: Align(
-                        alignment: Alignment.bottomCenter,
-                        child: SmoothPageIndicator(
-                          controller: _pageController,
-                          count: sneaker.imageUrl.length,
-                          effect: JumpingDotEffect(
-                            activeDotColor: Colors.black,
-                            dotColor: Colors.grey,
-                            dotHeight:
-                                Dimens.getHeight(context: context) * 0.01,
-                            dotWidth: Dimens.getWidth(context: context) * 0.02,
-                          ),
-                        ),
+          child: Stack(
+            children: [
+              Builder(
+                builder: (context) {
+                  final sneakerNotifier = context.watch<SneakerNotifier>();
+                  final sneaker = sneakerNotifier.sneaker!;
+                  return PageView.builder(
+                    controller: _pageController,
+                    itemCount: sneaker.imageUrl.length,
+                    itemBuilder: (context, index) {
+                      final sneakerNotifier = context.watch<SneakerNotifier>();
+                      final sneaker = sneakerNotifier.sneaker!;
+                      return Container(
+                        width: double.infinity,
+                        color: Colors.grey[400],
+                        child: Hero(
+                            tag: sneaker.id + index.toString(),
+                            child: CachedNetworkImage(
+                                imageUrl: sneaker.imageUrl[index])),
+                      );
+                    },
+                  );
+                },
+              ),
+              Builder(builder: (context) {
+                final favProvider = Provider.of<FavNotifier>(context);
+                final sneakerNotifier = context.watch<SneakerNotifier>();
+                final sneaker = sneakerNotifier.sneaker!;
+                return Positioned(
+                    top: Dimens.getHeight(context: context) * 0.08,
+                    right: Dimens.getWidth(context: context) * 0.04,
+                    child: GestureDetector(
+                      onTap: () {
+                        if (favProvider.ids.contains(sneaker.id)) {
+                          favProvider.deleteCart(int.parse(sneaker.id));
+                          favProvider.getFavIds();
+                          favProvider.getFav();
+                        } else {
+                          favProvider.createFav(int.parse(sneaker.id), {
+                            'id': sneaker.id,
+                            'category': sneaker.category,
+                            'imageUrl': sneaker.imageUrl[0],
+                            'name': sneaker.name,
+                            'price': sneaker.price,
+                          });
+                          favProvider.getFavIds();
+                          favProvider.getFav();
+                        }
+                      },
+                      child: Icon(
+                          favProvider.ids.contains(sneaker.id)
+                              ? FontAwesomeIcons.solidHeart
+                              : FontAwesomeIcons.heart,
+                          color: favProvider.ids.contains(sneaker.id)
+                              ? Colors.pink[400]
+                              : Colors.grey),
+                    ));
+              }),
+              Builder(builder: (context) {
+                final sneakerNotifier = context.watch<SneakerNotifier>();
+                final sneaker = sneakerNotifier.sneaker!;
+                return Padding(
+                  padding: const EdgeInsets.only(bottom: Dimens.dp26),
+                  child: Align(
+                    alignment: Alignment.bottomCenter,
+                    child: SmoothPageIndicator(
+                      controller: _pageController,
+                      count: sneaker.imageUrl.length,
+                      effect: JumpingDotEffect(
+                        activeDotColor: Colors.black,
+                        dotColor: Colors.grey,
+                        dotHeight: Dimens.getHeight(context: context) * 0.01,
+                        dotWidth: Dimens.getWidth(context: context) * 0.02,
                       ),
                     ),
-                  ],
+                  ),
                 );
-              },
-            );
-          }),
+              }),
+            ],
+          ),
         ),
+
         Align(
           alignment: Alignment.bottomCenter,
           child: Container(
