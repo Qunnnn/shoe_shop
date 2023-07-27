@@ -57,12 +57,28 @@ class ProductCard extends StatelessWidget {
                           height: Dimens.getHeight(context: context) * 0.17,
                           width: Dimens.getWidth(context: context) * 0.4,
                           child: Stack(children: [
-                            Builder(builder: (context) {
-                              final favProvider =
-                                  Provider.of<FavNotifier>(context);
-                              return Align(
-                                alignment: Alignment.topRight,
-                                child: GestureDetector(
+                            Align(
+                              alignment: Alignment.center,
+                              child: Hero(
+                                tag: sneaker.id + '0',
+                                placeholderBuilder:
+                                    (context, heroSize, child) =>
+                                        CachedNetworkImage(
+                                  imageUrl: sneaker.imageUrl[0],
+                                  fit: BoxFit.fill,
+                                ),
+                                child: CachedNetworkImage(
+                                  imageUrl: sneaker.imageUrl[0],
+                                  fit: BoxFit.fill,
+                                ),
+                              ),
+                            ),
+                            Align(
+                              alignment: Alignment.topRight,
+                              child: Builder(builder: (context) {
+                                final favProvider =
+                                    Provider.of<FavNotifier>(context);
+                                return GestureDetector(
                                   onTap: () {
                                     if (favProvider.ids.contains(sneaker.id)) {
                                       favProvider
@@ -90,24 +106,8 @@ class ProductCard extends StatelessWidget {
                                           favProvider.ids.contains(sneaker.id)
                                               ? Colors.pink[400]
                                               : Colors.grey),
-                                ),
-                              );
-                            }),
-                            Align(
-                              alignment: Alignment.center,
-                              child: Hero(
-                                tag: sneaker.id + '0',
-                                placeholderBuilder:
-                                    (context, heroSize, child) =>
-                                        CachedNetworkImage(
-                                  imageUrl: sneaker.imageUrl[0],
-                                  fit: BoxFit.fill,
-                                ),
-                                child: CachedNetworkImage(
-                                  imageUrl: sneaker.imageUrl[0],
-                                  fit: BoxFit.fill,
-                                ),
-                              ),
+                                );
+                              }),
                             ),
                           ]),
                         ),
