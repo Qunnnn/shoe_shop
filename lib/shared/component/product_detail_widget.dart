@@ -25,35 +25,29 @@ class ProductDetailWidget extends StatelessWidget {
         SizedBox(
           height: Dimens.getHeight(context: context) * 0.3,
           width: double.infinity,
-          child: Stack(
-            children: [
-              Builder(
-                builder: (context) {
-                  final sneakerNotifier = context.watch<SneakerNotifier>();
-                  final sneaker = sneakerNotifier.sneaker!;
-                  return PageView.builder(
-                    controller: _pageController,
-                    itemCount: sneaker.imageUrl.length,
-                    itemBuilder: (context, index) {
-                      final sneakerNotifier = context.watch<SneakerNotifier>();
-                      final sneaker = sneakerNotifier.sneaker!;
-                      return Container(
-                        width: double.infinity,
-                        color: Colors.grey[400],
-                        child: Hero(
-                            tag: sneaker.id + index.toString(),
-                            child: CachedNetworkImage(
-                                imageUrl: sneaker.imageUrl[index])),
-                      );
-                    },
-                  );
-                },
-              ),
-              Builder(builder: (context) {
-                final favProvider = Provider.of<FavNotifier>(context);
-                final sneakerNotifier = context.watch<SneakerNotifier>();
-                final sneaker = sneakerNotifier.sneaker!;
-                return Positioned(
+          child: Builder(builder: (context) {
+            final sneakerNotifier = context.watch<SneakerNotifier>();
+            final sneaker = sneakerNotifier.sneaker!;
+            final favProvider = Provider.of<FavNotifier>(context);
+            return Stack(
+              children: [
+                PageView.builder(
+                  controller: _pageController,
+                  itemCount: sneaker.imageUrl.length,
+                  itemBuilder: (context, index) {
+                    final sneakerNotifier = context.watch<SneakerNotifier>();
+                    final sneaker = sneakerNotifier.sneaker!;
+                    return Container(
+                      width: double.infinity,
+                      color: Colors.grey[400],
+                      child: Hero(
+                          tag: sneaker.id + index.toString(),
+                          child: CachedNetworkImage(
+                              imageUrl: sneaker.imageUrl[index])),
+                    );
+                  },
+                ),
+                Positioned(
                     top: Dimens.getHeight(context: context) * 0.08,
                     right: Dimens.getWidth(context: context) * 0.04,
                     child: GestureDetector(
@@ -81,12 +75,8 @@ class ProductDetailWidget extends StatelessWidget {
                           color: favProvider.ids.contains(sneaker.id)
                               ? Colors.pink[400]
                               : Colors.grey),
-                    ));
-              }),
-              Builder(builder: (context) {
-                final sneakerNotifier = context.watch<SneakerNotifier>();
-                final sneaker = sneakerNotifier.sneaker!;
-                return Padding(
+                    )),
+                Padding(
                   padding: const EdgeInsets.only(bottom: Dimens.dp26),
                   child: Align(
                     alignment: Alignment.bottomCenter,
@@ -101,12 +91,11 @@ class ProductDetailWidget extends StatelessWidget {
                       ),
                     ),
                   ),
-                );
-              }),
-            ],
-          ),
+                ),
+              ],
+            );
+          }),
         ),
-
         Align(
           alignment: Alignment.bottomCenter,
           child: Container(
