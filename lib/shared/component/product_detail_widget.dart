@@ -22,7 +22,8 @@ class ProductDetailWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        SizedBox(
+        Container(
+          color: Colors.grey[300],
           height: Dimens.getHeight(context: context) * 0.3,
           width: double.infinity,
           child: Builder(builder: (context) {
@@ -31,21 +32,18 @@ class ProductDetailWidget extends StatelessWidget {
             final favProvider = Provider.of<FavNotifier>(context);
             return Stack(
               children: [
-                PageView.builder(
-                  controller: _pageController,
-                  itemCount: sneaker.imageUrl.length,
-                  itemBuilder: (context, index) {
-                    final sneakerNotifier = context.watch<SneakerNotifier>();
-                    final sneaker = sneakerNotifier.sneaker!;
-                    return Container(
-                      width: double.infinity,
-                      color: Colors.grey[400],
-                      child: Hero(
-                          tag: sneaker.id + index.toString(),
-                          child: CachedNetworkImage(
-                              imageUrl: sneaker.imageUrl[index])),
-                    );
-                  },
+                Hero(
+                  tag: sneaker.id,
+                  child: PageView.builder(
+                    controller: _pageController,
+                    itemCount: sneaker.imageUrl.length,
+                    itemBuilder: (context, index) {
+                      final sneakerNotifier = context.watch<SneakerNotifier>();
+                      final sneaker = sneakerNotifier.sneaker!;
+                      return CachedNetworkImage(
+                          imageUrl: sneaker.imageUrl[index]);
+                    },
+                  ),
                 ),
                 Positioned(
                     top: Dimens.getHeight(context: context) * 0.08,

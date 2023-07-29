@@ -60,18 +60,15 @@ class ProductCard extends StatelessWidget {
                             Align(
                               alignment: Alignment.center,
                               child: Hero(
-                                tag: sneaker.id + '0',
-                                placeholderBuilder:
-                                    (context, heroSize, child) =>
-                                        CachedNetworkImage(
-                                  imageUrl: sneaker.imageUrl[0],
-                                  fit: BoxFit.fill,
-                                ),
-                                child: CachedNetworkImage(
-                                  imageUrl: sneaker.imageUrl[0],
-                                  fit: BoxFit.fill,
-                                ),
-                              ),
+                                  tag: sneaker.id,
+                                  placeholderBuilder:
+                                      (context, heroSize, child) =>
+                                          CachedNetworkImage(
+                                            imageUrl: sneaker.imageUrl[0],
+                                            fit: BoxFit.fill,
+                                          ),
+                                  child: CachedNetworkImage(
+                                      imageUrl: sneaker.imageUrl[0])),
                             ),
                             Align(
                               alignment: Alignment.topRight,
